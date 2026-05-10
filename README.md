@@ -1,4 +1,4 @@
-# FISTA SIGS - Sistema Integrado de Gestão Segura de Acessos e Infraestrutura
+# FISTA SIGS - Sistema Integrado de Gestão Segura
 
 ## 1. Introdução
 O **FISTA SIGS** (Sistema Integrado de Gestão Segura) é uma solução de gestão de infraestrutura crítica desenhada para a mitigação de riscos operacionais e garantia da integridade de dados na organização FISTA. O protótipo implementa controlos de segurança multicamada, fundamentados no modelo de **Privilégio Mínimo** e em arquiteturas **Zero Trust**.
@@ -48,7 +48,7 @@ python app.py
 | `developer.it` | ADMIN_IT | Administração Global e IAM |
 | `operations.it` | STAFF_OPERACIONAL | Visualização Operacional Limitada |
 | `coordenacao` | COORDENACAO | Aprovação de Pedidos e Gestão |
-| `backups.operator`| BACKUP_OPERATOR | Gestão de Cofres e Cifragem |
+| `backups.operator`| BACKUP_OPERATOR | Gestão de Backups e Encriptação |
 
 *Nota: Os segredos TOTP para aprovisionamento de autenticadores MFA são gerados dinamicamente e apresentados via stdout no primeiro arranque do sistema.*
 
