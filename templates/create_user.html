@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Criar Novo Utilizador</h2>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Password Inicial</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Role</label>
+                    <select name="role" class="form-control" required>
+                        <option value="ADMIN_IT">ADMIN_IT</option>
+                        <option value="COORDENACAO">COORDENACAO</option>
+                        <option value="PARCERIAS">PARCERIAS</option>
+                        <option value="FINANCEIRO">FINANCEIRO</option>
+                        <option value="MARKETING">MARKETING</option>
+                        <option value="STAFF_OPERACIONAL">STAFF_OPERACIONAL</option>
+                        <option value="VALIDADOR_EVENTO">VALIDADOR_EVENTO</option>
+                        <option value="BACKUP_OPERATOR">BACKUP_OPERATOR</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Data de Expiração</label>
+                    <input type="date" name="expiration_date" class="form-control" required>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label>Justificação do Acesso</label>
+                    <input type="text" name="justification" class="form-control" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Criar Utilizador</button>
+            <a href="{{ url_for('users') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Logs de Auditoria</h2>
+
+<div class="alert alert-info">
+    Para garantir a imutabilidade em produção (Linux), use: <code>sudo chattr +a audit.log.jsonl</code>
+</div>
+
+<div class="card">
+    <div class="card-header bg-dark text-success font-monospace">
+        audit.log.jsonl (Append-only)
+    </div>
+    <div class="card-body p-0">
+        <div class="log-container">
+            {% for line in logs %}
+            <div class="log-line">{{ line }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">SIGS Overview <span class="badge bg-danger pulse-badge" style="font-size: 0.4em; vertical-align: middle;">LIVE</span></h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card stat-card">
+            <div class="card-body text-center">
+                <h6 class="card-title text-uppercase text-muted" style="color: #00f3ff !important;">Active Operatives</h6>
+                <h2 class="display-4">{{ active_users }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card" style="border-top-color: #ff003c;">
+            <div class="card-body text-center">
+                <h6 class="card-title text-uppercase text-muted" style="color: #ff003c !important;">Expired Tokens</h6>
+                <h2 class="display-4" style="color: #ff003c; text-shadow: 0 0 10px rgba(255,0,60,0.5);">{{ expired_users }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card" style="border-top-color: #ffcc00;">
+            <div class="card-body text-center">
+                <h6 class="card-title text-uppercase text-muted" style="color: #ffcc00 !important;">Pending Access</h6>
+                <h2 class="display-4" style="color: #ffcc00; text-shadow: 0 0 10px rgba(255,204,0,0.5);">{{ pending_requests }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card" style="border-top-color: #00ff41;">
+            <div class="card-body text-center">
+                <h6 class="card-title text-uppercase text-muted" style="color: #00ff41 !important;">Encrypted Vaults</h6>
+                <h2 class="display-4" style="color: #00ff41; text-shadow: 0 0 10px rgba(0,255,65,0.5);">{{ backup_count }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="mt-4">Real-time Threat & Audit Stream</h4>
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-striped mb-0">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Operative</th>
+                    <th>Action</th>
+                    <th>Target Resource</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in recent_logs %}
+                <tr>
+                    <td><code>{{ log.timestamp }}</code></td>
+                    <td><span style="color: #00f3ff;">{{ log.user }}</span></td>
+                    <td>{{ log.action }}</td>
+                    <td>{{ log.resource }}</td>
+                    <td>
+                        {% if log.result == 'success' %}
+                        <span class="badge bg-success">VALID</span>
+                        {% else %}
+                        <span class="badge bg-danger text-uppercase">{{ log.result }}</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+.pulse-badge {
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 0, 60, 0.7); }
+    70% { opacity: 0.7; box-shadow: 0 0 0 10px rgba(255, 0, 60, 0); }
+    100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 0, 60, 0); }
+}
+</style>
+{% endblock %}

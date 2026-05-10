@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+body {
+    background-color: #050b14;
+    color: #a0c0d0;
+    font-family: 'Share Tech Mono', monospace;
+    background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    color: #00f3ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.navbar {
+    background: rgba(5, 11, 20, 0.9) !important;
+    border-bottom: 1px solid #00f3ff;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #a0c0d0;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #00f3ff;
+    text-shadow: 0 0 5px #00f3ff;
+}
+
+.card {
+    background: rgba(10, 16, 30, 0.85);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 243, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    color: #e0f0ff;
+}
+
+.card-header {
+    background: rgba(0, 243, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+    font-family: 'Orbitron', sans-serif;
+    color: #00f3ff;
+}
+
+.btn-primary {
+    background-color: rgba(0, 243, 255, 0.1);
+    border: 1px solid #00f3ff;
+    color: #00f3ff;
+    box-shadow: inset 0 0 5px rgba(0, 243, 255, 0.2);
+    transition: all 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.btn-primary:hover {
+    background-color: rgba(0, 243, 255, 0.2);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+}
+
+.btn-danger {
+    background-color: rgba(255, 0, 60, 0.1);
+    border: 1px solid #ff003c;
+    color: #ff003c;
+    box-shadow: inset 0 0 5px rgba(255, 0, 60, 0.2);
+}
+
+.btn-danger:hover {
+    background-color: rgba(255, 0, 60, 0.2);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.6);
+}
+
+.btn-success {
+    background-color: rgba(0, 255, 65, 0.1);
+    border: 1px solid #00ff41;
+    color: #00ff41;
+}
+
+.btn-success:hover {
+    background-color: rgba(0, 255, 65, 0.2);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+}
+
+.btn-warning {
+    background-color: rgba(255, 204, 0, 0.1);
+    border: 1px solid #ffcc00;
+    color: #ffcc00;
+}
+
+.btn-warning:hover {
+    background-color: rgba(255, 204, 0, 0.2);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+}
+
+table.table {
+    color: #a0c0d0;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    color: #a0c0d0;
+    background-color: rgba(0, 243, 255, 0.05);
+}
+
+.table-striped>tbody>tr>*:hover {
+    background-color: rgba(0, 243, 255, 0.1);
+}
+
+table th {
+    border-bottom: 1px solid #00f3ff !important;
+    color: #00f3ff;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+}
+
+table td {
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+}
+
+.form-control, .form-select {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid rgba(0, 243, 255, 0.4) !important;
+    color: #00f3ff !important;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    border-color: #00f3ff !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.5) !important;
+}
+
+.log-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #00ff41;
+    font-family: 'Share Tech Mono', monospace;
+    padding: 15px;
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #00ff41;
+    box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.log-line {
+    border-bottom: 1px dashed rgba(0, 255, 65, 0.3);
+    padding: 4px 0;
+}
+.log-line:hover {
+    background: rgba(0, 255, 65, 0.1);
+}
+
+.badge.bg-success { background-color: rgba(0, 255, 65, 0.2) !important; border: 1px solid #00ff41; color: #00ff41; }
+.badge.bg-danger { background-color: rgba(255, 0, 60, 0.2) !important; border: 1px solid #ff003c; color: #ff003c; }
+.badge.bg-warning { background-color: rgba(255, 204, 0, 0.2) !important; border: 1px solid #ffcc00; color: #ffcc00; }
+.badge.bg-info { background-color: rgba(0, 243, 255, 0.2) !important; border: 1px solid #00f3ff; color: #00f3ff; }
+.badge.bg-secondary { background-color: rgba(160, 192, 208, 0.2) !important; border: 1px solid #a0c0d0; color: #a0c0d0; }
+
+/* Dashboard specific stats */
+.stat-card {
+    border-top: 3px solid #00f3ff;
+    position: relative;
+    overflow: hidden;
+}
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(0, 243, 255, 0.2), transparent);
+    animation: scan 3s infinite linear;
+}
+@keyframes scan {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+.display-4 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00f3ff;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}

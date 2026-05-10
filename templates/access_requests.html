@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Pedidos de Acesso</h2>
+
+<div class="card mt-4 mb-5">
+    <div class="card-header">Novo Pedido</div>
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('create_request') }}">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label>Role Pretendida</label>
+                    <select name="target_role" class="form-control" required>
+                        <option value="ADMIN_IT">ADMIN_IT</option>
+                        <option value="COORDENACAO">COORDENACAO</option>
+                        <option value="PARCERIAS">PARCERIAS</option>
+                        <option value="FINANCEIRO">FINANCEIRO</option>
+                        <option value="MARKETING">MARKETING</option>
+                        <option value="STAFF_OPERACIONAL">STAFF_OPERACIONAL</option>
+                        <option value="VALIDADOR_EVENTO">VALIDADOR_EVENTO</option>
+                        <option value="BACKUP_OPERATOR">BACKUP_OPERATOR</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Sistema</label>
+                    <select name="system" class="form-control" required>
+                        <option value="Servidor/VPS">Servidor/VPS</option>
+                        <option value="Site/Backoffice">Site/Backoffice</option>
+                        <option value="Backups">Backups</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Prazo Pretendido (dias)</label>
+                    <input type="number" name="requested_duration" class="form-control" required min="1">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Justificação</label>
+                    <input type="text" name="justification" class="form-control" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submeter Pedido</button>
+        </form>
+    </div>
+</div>
+
+<h4>Pedidos Pendentes</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Solicitante</th>
+            <th>Role</th>
+            <th>Sistema</th>
+            <th>Justificação</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for req in requests %}
+        <tr>
+            <td>{{ req.id }}</td>
+            <td>{{ req.username }}</td>
+            <td>{{ req.target_role }}</td>
+            <td>{{ req.system }}</td>
+            <td>{{ req.justification }}</td>
+            <td>
+                <form action="{{ url_for('process_request', req_id=req.id) }}" method="POST" class="d-inline">
+                    <button type="submit" name="action" value="approve" class="btn btn-sm btn-success">Aprovar</button>
+                    <button type="submit" name="action" value="reject" class="btn btn-sm btn-danger">Rejeitar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

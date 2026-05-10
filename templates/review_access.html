@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Revisão de Acessos Administrativos</h2>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Data de Expiração</th>
+                    <th>Estado</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in admins %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>{{ user.expiration_date or 'N/A' }}</td>
+                    <td>
+                        {% if user.revoked %}
+                            <span class="badge bg-danger">Revogado</span>
+                        {% elif user.is_expired %}
+                            <span class="badge bg-warning text-dark">Expirado</span>
+                        {% else %}
+                            <span class="badge bg-success">Ativo</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="{{ url_for('renew_access', user_id=user.id) }}" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-success">Renovar (30 dias)</button>
+                        </form>
+                        <form action="{{ url_for('revoke_user', user_id=user.id) }}" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-danger">Revogar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

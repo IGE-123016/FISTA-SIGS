@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Base de Dados e Segurança (Sensível)
+fista.db
+backup.key
+audit.log.jsonl
+backups/*.enc
+
+# Ficheiros de Teste
+test_fista.db
+test_audit.log.jsonl
+test_backups/
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store

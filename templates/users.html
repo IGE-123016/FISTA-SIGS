@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Gestão de Utilizadores</h2>
+    <a href="{{ url_for('create_user') }}" class="btn btn-primary">Criar Utilizador</a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Expiração</th>
+                    <th>Estado</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>{{ user.expiration_date or 'N/A' }}</td>
+                    <td>
+                        {% if user.revoked %}
+                            <span class="badge bg-danger">Revogado</span>
+                        {% elif not user.is_active %}
+                            <span class="badge bg-secondary">Inativo</span>
+                        {% elif user.is_expired %}
+                            <span class="badge bg-warning text-dark">Expirado</span>
+                        {% else %}
+                            <span class="badge bg-success">Ativo</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="{{ url_for('toggle_user', user_id=user.id) }}" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-{{ 'warning' if user.is_active else 'success' }}">
+                                {{ 'Desativar' if user.is_active else 'Ativar' }}
+                            </button>
+                        </form>
+                        <form action="{{ url_for('revoke_user', user_id=user.id) }}" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-danger" {{ 'disabled' if user.revoked }}>Revogar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
