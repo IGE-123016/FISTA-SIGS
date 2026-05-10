@@ -27,18 +27,28 @@ O **FISTA SIGS** (Sistema Integrado de Gestão Segura) é uma solução de gest�
 - Python 3.x
 - Bibliotecas: Flask, bcrypt, pyotp, cryptography, sqlite3.
 
-### 3.2. Procedimento de Instalação (Windows/PowerShell)
+### 3.2. Procedimento de Instalação e Execução
+Para executar o protótipo, siga os passos abaixo no terminal:
+
 ```powershell
+# Clonar o repositório
+git clone https://github.com/IGE-123016/FISTA-SIGS
+cd FISTA-SIGS
+
 # Inicialização do Ambiente Virtual
 python -m venv venv
 .\venv\Scripts\activate
 
-# Instalação de Dependências de Segurança
+# Instalação de Dependências
 pip install -r requirements.txt
 
-# Execução do Servidor de Aplicação
-python app.py
+# Execução do Servidor
+py app.py
 ```
+
+Após a execução, aceda no browser ao endereço indicado na CLI (geralmente `http://127.0.0.1:5000`). 
+
+**Nota sobre MFA:** A autenticação requer o uso de uma ferramenta de terceiros (ex: [https://totp.app/](https://totp.app/)) para gerar as chaves de acesso dinâmicas, utilizando o código MFA (Secret) fornecido no terminal durante o arranque do sistema.
 
 ## 4. Credenciais de Teste e Provisionamento Inicial
 

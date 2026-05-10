@@ -2,14 +2,14 @@ import unittest
 import os
 import json
 
-# Setup mock files for tests before importing the app
+# Configuração de ficheiros temporários para testes
 TEST_DB = 'test_fista.db'
 TEST_LOG = 'test_audit.log.jsonl'
 TEST_BACKUP = 'test_backups'
 
 import app as myapp
 
-# Override app config
+# Sobrepor configuração da aplicação para ambiente de teste
 myapp.DB_FILE = TEST_DB
 myapp.LOG_FILE = TEST_LOG
 myapp.BACKUP_DIR = TEST_BACKUP
@@ -21,22 +21,22 @@ class FISTAUnitTests(unittest.TestCase):
             os.makedirs(TEST_BACKUP)
 
     def setUp(self):
-        # Configure app for testing
+        # Configurar aplicação para modo de teste
         myapp.app.config['TESTING'] = True
         myapp.app.config['WTF_CSRF_ENABLED'] = False
         self.client = myapp.app.test_client()
         
-        # Clean up any residual test files
+        # Limpar ficheiros de teste residuais
         if os.path.exists(TEST_DB):
             os.remove(TEST_DB)
         if os.path.exists(TEST_LOG):
             os.remove(TEST_LOG)
             
-        # Initialize the fresh test database
+        # Inicializar a base de dados de teste limpa
         myapp.init_db()
 
     def tearDown(self):
-        # Close connection and remove test files
+        # Fechar ligação e remover ficheiros temporários de teste
         with myapp.app.app_context():
             if getattr(myapp.g, '_database', None):
                 myapp.g._database.close()

@@ -19,7 +19,7 @@ BACKUP_DIR = 'backups'
 if not os.path.exists(BACKUP_DIR):
     os.makedirs(BACKUP_DIR)
 
-# Fernet key for backup encryption
+# Chave Fernet para cifragem dos backups
 BACKUP_KEY_FILE = 'backup.key'
 if os.path.exists(BACKUP_KEY_FILE):
     with open(BACKUP_KEY_FILE, 'rb') as kf:
